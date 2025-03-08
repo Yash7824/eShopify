@@ -45,4 +45,8 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     @Transactional
     @Query(value = UserQ.DeleteUserQ, nativeQuery = true)
     int deleteUserQ(@Param("user_id") UUID userId);
+
+    @Transactional
+    @Query(value = UserQ.GetUserbyEmailQ, nativeQuery = true)
+    Map<String, Object> getUserByEmail(@Param("user_email") String user_email);
 }

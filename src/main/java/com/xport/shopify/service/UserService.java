@@ -10,8 +10,6 @@ import com.xport.shopify.service.interfaces.IUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
-
-import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -130,5 +128,24 @@ public class UserService implements IUserService {
             System.out.println("Exception occurred: " + ex.getMessage());
         }
         return deleteUserDtoQ;
+    }
+
+    @Override
+    public UserDto getUserByEmail(String user_email) {
+        UserDto userDto = new UserDto();
+        try{
+            Map<String, Object> userMap = userRepository.getUserByEmail(user_email);
+            Timestamp timestamp = (Timestamp) userMap.get("created_at");
+            userDto.setUserId((UUID) userMap.get("user_id"));
+            userDto.setUserName((String) userMap.get("user_name"));
+            userDto.setUserEmail((String) userMap.get("user_email"));
+            userDto.setUserPassword((String) userMap.get("user_password"));
+            userDto.setUserMobile((String) userMap.get("user_mobile"));
+            userDto.setCreatedAt(timestamp.toLocalDateTime());
+        }catch(Exception ex){
+            System.out.println("Exception occurred: " + ex.getMessage());
+        }
+
+        return userDto;
     }
 }

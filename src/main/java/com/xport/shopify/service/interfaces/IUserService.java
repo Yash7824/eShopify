@@ -5,7 +5,6 @@ import com.xport.shopify.dto.UpdatedUserDto;
 import com.xport.shopify.dto.UserDto;
 
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 public interface IUserService {
@@ -15,4 +14,5 @@ public interface IUserService {
     List<UserDto> getUsersQ();
     UpdatedUserDto updateUserQ(UserDto userdto);
     DeleteUserDto deleteUserQ(UUID userId);
+    UserDto getUserByEmail(String user_email);
 }

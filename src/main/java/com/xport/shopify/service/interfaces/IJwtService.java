@@ -1,7 +1,10 @@
 package com.xport.shopify.service.interfaces;
 
-import java.util.UUID;
+import com.xport.shopify.dto.TokenReq;
+
+import java.security.Key;
 
 public interface IJwtService {
-    public String generateToken(UUID userId);
+    String generateToken(TokenReq tokenReq);
+    Key getKey();
 }

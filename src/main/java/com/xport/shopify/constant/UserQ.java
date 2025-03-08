@@ -6,4 +6,5 @@ public class UserQ {
     public static final String GetUsersQ = "SELECT * FROM users";
     public static final String UpdateUserQ = "UPDATE users set user_name = :user_name, user_email = :user_email, user_password = :user_password, user_mobile = :user_mobile where user_id = :user_id";
     public static final String DeleteUserQ = "DELETE FROM users where user_id = :user_id";
+    public static final String GetUserbyEmailQ = "SELECT user_id, user_name, user_email, user_password, user_mobile, created_at from users where user_email = :user_email";
 }
